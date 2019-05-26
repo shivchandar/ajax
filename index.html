@@ -18,7 +18,7 @@
                 <label for="">First Name</label>
                 <input type="text" class="form-control" id="firstName" placeholder="Add Tood">
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="">Last Name</label>
                 <input type="text" class="form-control" id="lastName" placeholder="Add Tood">
             </div>
@@ -29,7 +29,7 @@
             <div class="form-group">
                 <label for="">State</label>
                 <input type="text" class="form-control" id="state" placeholder="Add Tood">
-            </div>
+            </div> -->
 
             <button type="submit" class="btn btn-sm btn-primary">Submit</button>
         </form>
@@ -43,12 +43,21 @@
 
     <script id="listitemtemplate" type="text/x-handlebars-template">
         <li class="list-group-item" id={{id}}>
-            <div>
-                <span>{{firstname}} {{lastname}}</span>
+            <div class="content">
+                <span>{{firstname}} </span>
                 <button class="btn btn-sm btn-danger deleteBtn">Delete</button>
-                <button class="btn btn-sm btn-info">Edit</button>
+                <button class="btn btn-sm btn-info editBtn">Edit</button>
             </div>
         </li>
+    </script>
+
+    <script id="editTemplate" type="text/x-handlebars-template">
+        <form id="editToDo">
+            <div class="form-group">                
+                <input type="text" value="{{value}}" class="form-control" id="firstName" placeholder="Add Tood">
+            </div>
+            <button type="submit" class="btn btn-sm btn-primary">Save Change</button>
+        </form>
     </script>
 
     <script src="script.js"></script>
