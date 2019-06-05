@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Slider - Default functionality</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="content">
+                        <h3 class="content__heading">Lorem ipsum dolor sit amet </h3>
+                        <p class="content__para">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus a dicta repudiandae
+                            consequuntur, ducimus maxime, quisquam animi voluptatibus aliquam veritatis expedita,
+                            reprehenderit incidunt qui nostrum dolorum aperiam error facere eligendi?
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="slider__item">
+                        <h3 class="slider__heading text-uppercase">My desired Monthly Income</h3>
+                        <h2 id="display">
+                            <span>$</span><span id="ammount">2500</span>
+                        </h2>
+                        <div id="slider"></div>
+                        <div class="row">
+                            <div class="col">
+                                <span id="parties">20</span> Parties
+                            </div>
+                            <div class="col">
+                                <span id="hours">60</span>Hours
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+ 
+        $(function () {
+            $('#slider').slider({
+                range: "min",
+                min: 0,
+                max: 11250,
+                value: 2500,
+                step: 125,
+                slide: function (event, ui) {
+                    var amt = $("#slider").slider("value");
+                    $("#ammount").val(amt);
+                }
+                /* change: function (event, ui) {
+                    var amt = $("#slider").slider("value");
+                    $("#ammount").val(ui.value);
+                    var amount = $("#ammount").val(amt);                        
+                    $("#parties").val(amt / 125);
+                    var parties = $("#parties").val(amount / 125);
+                    $("#hours").val(parties / 125 * 3);
+                  } */
+            });
+
+            $('#slider').on("slidechange", function () {
+                var amt = $("#slider").slider("value");
+                var partie = amt / 125;
+                var hour = partie * 3;
+                $("#ammount").text(amt);
+                $("#parties").text(partie);
+                $("#hours").text(hour);
+
+            });
+
+        });
+    </script>
+</body>
+
+</html>
